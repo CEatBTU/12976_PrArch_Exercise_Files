@@ -15,7 +15,17 @@ add wave \
 	sim:/tb_riscv_core/u_riscv_core/o_data_wr
 
 add wave -divider "Inst. Decoder"
-add wave sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_decoded_instr
+add wave sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_decoded_instr \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_aluop \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_alusrc \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_branch \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_decoded_instr \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_mem2reg \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_memrd \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_memwr \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_pc2reg \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_pc_ctrl \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_regwr
 
 add wave -divider "Reg. File"
 add wave \

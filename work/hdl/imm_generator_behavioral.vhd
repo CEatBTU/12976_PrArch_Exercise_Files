@@ -29,6 +29,7 @@ ARCHITECTURE behavioral OF imm_generator IS
  	signal s_immediate_B : std_logic_vector(31 downto 0);
 	signal s_immediate_I : std_logic_vector(31 downto 0);
 	signal s_immediate_U : std_logic_vector(31 downto 0);
+	signal s_immediate_J : std_logic_vector(31 downto 0);
 	signal s_immediate_S : std_logic_vector(31 downto 0);
 
 	signal s_immediate   : std_logic_vector(31 downto 0);
@@ -60,6 +61,18 @@ BEGIN
 		s_immediate_U(31 downto 12) <= i_encoded_instr(31 downto 12);
 		s_immediate_U(11 downto 0)  <= (others => '0');
 		
+		-- Update immediate_J
+		if (i_encoded_instr(31) = '0') then 
+			s_immediate_J(31 downto 20) <= (others => '0');
+		else
+			s_immediate_J(31 downto 20) <= (others => '1');
+		end if;
+		s_immediate_J(19 downto 12) <= i_encoded_instr(19 downto 12);
+		s_immediate_J(11)           <= i_encoded_instr(20);
+		s_immediate_J(10 downto  5) <= i_encoded_instr(30 downto 25);
+		s_immediate_J(4  downto  1) <= i_encoded_instr(24 downto 21);
+		s_immediate_J(0)            <= '0';
+		
 		-- Update immediate_S
 		if (i_encoded_instr(31) = '0') then 
 			s_immediate_S(31 downto 11) <= (others => '0');
@@ -74,7 +87,8 @@ BEGIN
 	s_immediate <= 
 	  s_immediate_I when is_itype(i_decoded_instr) else
 	  s_immediate_S when is_stype(i_decoded_instr) else
-	  s_immediate_U when i_decoded_instr = INST_LUI else
+	  s_immediate_U when is_utype(i_decoded_instr) else
+      s_immediate_J when is_jtype(i_decoded_instr) else
 	  s_immediate_B;
 
 	o_immediate <= s_immediate;

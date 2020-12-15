@@ -18,13 +18,15 @@ ENTITY instr_decoder IS
 	  i_encoded_instr : in std_logic_vector(31 downto 0);
 		
 	  o_decoded_instr : out t_riscv_inst;
-	  o_branch : out std_logic;
-	  o_memrd  : out std_logic;
-	  o_memwr  : out std_logic;
-	  o_mem2reg: out std_logic;
-	  o_regwr  : out std_logic;
-	  o_alusrc : out std_logic;
-	  o_aluop  : out aluop);
+	  o_branch  : out std_logic;
+	  o_memrd   : out std_logic;
+	  o_memwr   : out std_logic;
+	  o_mem2reg : out std_logic;
+	  o_regwr   : out std_logic;
+	  o_alusrc  : out std_logic;
+	  o_pc_ctrl : out std_logic_vector(3 downto 0);
+	  o_pc2reg  : out std_logic;
+	  o_aluop   : out aluop);
 END ENTITY instr_decoder;
 
 --
@@ -35,13 +37,15 @@ ARCHITECTURE behavioral OF instr_decoder IS
 	
   signal s_decoded_instr : t_riscv_inst;
 	
-  signal s_branch : std_logic;
-  signal s_memrd  : std_logic;
-  signal s_memwr  : std_logic;
-  signal s_mem2reg: std_logic;
-  signal s_regwr  : std_logic;
-  signal s_alusrc : std_logic;
-  signal s_aluop  : aluop;
+  signal s_branch  : std_logic;
+  signal s_memrd   : std_logic;
+  signal s_memwr   : std_logic;
+  signal s_mem2reg : std_logic;
+  signal s_regwr   : std_logic;
+  signal s_alusrc  : std_logic;
+  signal s_pc_ctrl : std_logic_vector(3 downto 0);
+  signal s_pc2reg  : std_logic;
+  signal s_aluop   : aluop;
 	
 BEGIN
   
@@ -53,6 +57,14 @@ BEGIN
   begin
    	  if opcode = "0110111" then
    	    s_decoded_instr <= INST_LUI;
+   	  elsif opcode = "0010111" then 
+   	    s_decoded_instr <=  INST_AUIPC;
+ 	    elsif opcode = "1101111" then
+ 	      s_decoded_instr <= INST_JAL;
+ 	    
+ 	    elsif opcode = "1100111" and funct3 = "000" then
+ 	      s_decoded_instr <= INST_JALR;  
+ 	    
   		
       elsif opcode = "1100011" and funct3 = "000" then
     		  s_decoded_instr <= INST_BEQ;
@@ -120,92 +132,150 @@ BEGIN
 	  s_mem2reg <= '0';
 	  s_regwr   <= '0';
 	  s_alusrc  <= '0';
+ 	  s_pc2reg  <= '0';
+	  s_pc_ctrl <= "0000";
 	  s_aluop   <= OP_A;
     
-    
-    if is_AL(s_decoded_instr) then
-      s_regwr <= '1';
-      
-      if not is_AL_R(s_decoded_instr) then
-        s_alusrc <= '1';
-      end if;
-    elsif s_decoded_instr = INST_LW then
-      s_alusrc <= '1';
-      s_memrd <= '1';
-      s_mem2reg <= '1';
-      s_regwr <= '1';
-    elsif s_decoded_instr = INST_SW then
-     s_alusrc <= '1';
-    	s_memwr <= '1';
-    elsif is_branch(s_decoded_instr) then
-    	s_branch <= '1';
+    -- Assign branch
+    if is_branch(s_decoded_instr) then
+      s_branch <= '1';
     end if;
     
-    -- Assign s_aluop
+    -- Assign memrd
+    if s_decoded_instr = INST_LW then
+      s_memrd <= '1';
+    end if;
+  
+    -- Assign memwr
+    if is_stype(s_decoded_instr) then
+    	s_memwr <= '1';
+	end if;	
+ 	  
+ 	  -- Assign mem2reg
+    if s_decoded_instr = INST_LW then
+      s_memrd <= '1';
+    end if;
+ 	  
+    -- Assign regwr
+    if writes2reg(s_decoded_instr) then
+      s_regwr <= '1';
+    end if;
+    
+    -- Assign alusrc
+	if is_itype(s_decoded_instr) or 
+	   is_stype(s_decoded_instr) or 
+	   is_jtype(s_decoded_instr) or 
+	   is_utype(s_decoded_instr) then
+	  
+		s_alusrc <= '1';
+    end if;
+		
+	-- Assign pc2reg
+	if is_pc2reg(s_decoded_instr) then
+		s_pc2reg <= '1';
+	end if;
+
+	-- Assign pc_ctrl
+	if s_decoded_instr = INST_BEQ then 
+		s_pc_ctrl <= "0001";
+	elsif s_decoded_instr = INST_BNE then
+		s_pc_ctrl <= "0010";
+	elsif s_decoded_instr = INST_BLT then
+		s_pc_ctrl <= "0011";
+	elsif s_decoded_instr = INST_BGE then
+		s_pc_ctrl <= "0100";
+	elsif s_decoded_instr = INST_BLTU then
+		s_pc_ctrl <= "0101";
+	elsif s_decoded_instr = INST_BGEU then
+		s_pc_ctrl <= "0110";
+	elsif s_decoded_instr = INST_JAL then
+		s_pc_ctrl <= "1000";
+	elsif s_decoded_instr = INST_JALR then
+		s_pc_ctrl <= "1001";
+	else
+		s_pc_ctrl <= "0000";
+	end if;
+
+	-- Assign s_aluop
     case s_decoded_instr is
-			when INST_LUI =>
-				s_aluop <= OP_B;
+		when INST_LUI =>
+			s_aluop <= OP_B;
+		when INST_AUIPC =>
+			s_aluop <= OP_ADD;
 
-			when INST_BEQ =>
-				s_aluop <= OP_SUB;
-			when INST_BLT =>
-				s_aluop <= OP_SUB;
-			when INST_BGE =>
-				s_aluop <= OP_SUB;
+		when INST_JAL =>
+			s_aluop <= OP_ADD;
+		when INST_JALR =>
+			s_aluop <= OP_ADD;
 
-			-- Memory operations
-			when INST_LW =>
-				s_aluop <= OP_ADD;
-			when INST_SW =>
-				s_aluop <= OP_ADD;
+		when INST_BEQ =>
+			s_aluop <= OP_SUB;
+		when INST_BNE =>
+			s_aluop <= OP_SUB;
+		when INST_BLTU =>
+			s_aluop <= OP_SUBU;
+		when INST_BLT =>
+			s_aluop <= OP_SUB;
+		when INST_BGE =>
+			s_aluop <= OP_SUB;
+		when INST_BGEU =>
+			s_aluop <= OP_SUBU;
 
-			-- Immediate operations
-			-- I-type
-			when INST_ADD =>
-				s_aluop <= OP_ADD;
-			when INST_ADDI =>
-				s_aluop <= OP_ADD;
-			when INST_SUB =>
-				s_aluop <= OP_SUB;
-				
-			when INST_AND =>
-				s_aluop <= OP_AND;
-			when INST_ANDI =>
-				s_aluop <= OP_AND;
-			when INST_OR =>
-				s_aluop <= OP_OR;
-			when INST_ORI =>
-				s_aluop <= OP_OR;
-			when INST_XOR =>
-				s_aluop <= OP_XOR;
-			when INST_XORI =>
-				s_aluop <= OP_XOR;
-				
-			when INST_SLL =>
-				s_aluop <= OP_SLL;
-			when INST_SLLI =>
-				s_aluop <= OP_SLL;
-			when INST_SRA =>
-				s_aluop <= OP_SRA;
-			when INST_SRAI =>
-				s_aluop <= OP_SRA;
-			when INST_SRL =>
-				s_aluop <= OP_SRL;
-			when INST_SRLI =>
-				s_aluop <= OP_SRL;
-				
-			when INST_SLT =>
-				s_aluop <= OP_SUB;
-			when INST_SLTI =>
-				s_aluop <= OP_SUB;
-			when INST_SLTU =>
-				s_aluop <= OP_SUBU;
-			when INST_SLTIU =>
-				s_aluop <= OP_SUBU;
+		-- Memory operations
+		when INST_LW =>
+			s_aluop <= OP_ADD;
+		when INST_SW =>
+			s_aluop <= OP_ADD;
 
-			when INST_UNDEFINED =>
-				s_aluop <= OP_ADD;
-		end case;
+		-- Immediate operations
+		-- I-type
+		when INST_ADD =>
+			s_aluop <= OP_ADD;
+		when INST_ADDI =>
+			s_aluop <= OP_ADD;
+		when INST_SUB =>
+			s_aluop <= OP_SUB;
+			
+		when INST_AND =>
+			s_aluop <= OP_AND;
+		when INST_ANDI =>
+			s_aluop <= OP_AND;
+		when INST_OR =>
+			s_aluop <= OP_OR;
+		when INST_ORI =>
+			s_aluop <= OP_OR;
+		when INST_XOR =>
+			s_aluop <= OP_XOR;
+		when INST_XORI =>
+			s_aluop <= OP_XOR;
+			
+		when INST_SLL =>
+			s_aluop <= OP_SLL;
+		when INST_SLLI =>
+			s_aluop <= OP_SLL;
+		when INST_SRA =>
+			s_aluop <= OP_SRA;
+		when INST_SRAI =>
+			s_aluop <= OP_SRA;
+		when INST_SRL =>
+			s_aluop <= OP_SRL;
+		when INST_SRLI =>
+			s_aluop <= OP_SRL;
+		
+		-- Probably don't work
+		when INST_SLT =>
+			s_aluop <= OP_SUB;
+		when INST_SLTI =>
+			s_aluop <= OP_SUB;
+		when INST_SLTU =>
+			s_aluop <= OP_SUBU;
+		when INST_SLTIU =>
+			s_aluop <= OP_SUBU;
+
+		when INST_UNDEFINED =>
+			s_aluop <= OP_ADD;
+	end case;
+
 	end process;
 	
 	o_decoded_instr <= s_decoded_instr;
@@ -215,7 +285,10 @@ BEGIN
 	o_mem2reg <= s_mem2reg;
 	o_regwr   <= s_regwr;
 	o_alusrc  <= s_alusrc;
+	o_pc2reg  <= s_pc2reg;
+	o_pc_ctrl <= s_pc_ctrl;
 	o_aluop   <= s_aluop;
+	
 	
 END ARCHITECTURE behavioral;
 

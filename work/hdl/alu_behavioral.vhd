@@ -23,9 +23,11 @@ ENTITY alu IS
 		
 		-- outputs
 		output   : out std_logic_vector(31 downto 0);
+		cmp_ltu  : out std_logic;
 		cmp_lt   : out std_logic;
 		cmp_eq   : out std_logic;
-		cmp_gt   : out std_logic);
+		cmp_gt   : out std_logic;
+		cmp_gtu  : out std_logic);
 END ENTITY alu;
 
 --
@@ -37,9 +39,11 @@ BEGIN
 	begin
 		samt := to_integer(unsigned(i_B(4 downto 0)));
 
-		cmp_lt <= '0';
-		cmp_eq <= '0';
-		cmp_gt <= '0';
+		cmp_ltu <= '0';
+		cmp_lt  <= '0';
+		cmp_eq  <= '0';
+		cmp_gt  <= '0';
+		cmp_gtu <= '0';
 
 		case alu_ctrl is
 
@@ -88,6 +92,12 @@ BEGIN
 				
 			when OP_SLL =>
 				output <= std_logic_vector(shift_left(unsigned(i_A), samt));
+
+			when OP_A   =>
+				output <= i_A;
+				
+			when OP_B   =>
+				output <= i_B;
 
 			when others =>
 				output <= (others => '0');

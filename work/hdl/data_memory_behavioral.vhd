@@ -88,7 +88,7 @@ BEGIN
 			  elsif (c_stack_lower <= unsigned(i_data_addr) and unsigned(i_data_addr) < c_stack_upper) then
 				  o_data_data <= s_stack_segment(to_integer(shift_right(unsigned(i_data_addr), 2)));
 			  else
-			      assert false report "Data Address not a valid range in the data memory." severity failure;
+			      assert false report "Data Address not a valid range in the data memory." severity warning;
 			  end if;
 			  
 				
@@ -100,7 +100,7 @@ BEGIN
 			  elsif (c_stack_lower <= unsigned(i_data_addr) and unsigned(i_data_addr) < c_stack_upper) then		
      			  s_stack_segment(to_integer(shift_right(unsigned(i_data_addr), 2))) <= i_data_data;
 			  else
-			      assert false report "Data Address not a valid range in the data memory." severity failure;
+			      assert false report "Data Address not a valid range in the data memory." severity warning;
 			  end if;			  			  
 
 			end if;
