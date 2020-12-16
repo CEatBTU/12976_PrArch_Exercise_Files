@@ -66,294 +66,276 @@ VIEW structural.bd
 GRAPHIC 1220,0 55 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 537,0 56 0 
+GRAPHIC 951,0 56 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 951,0 57 0 
+GRAPHIC 979,0 57 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 979,0 58 0 
+GRAPHIC 2327,0 58 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2327,0 59 0 
+GRAPHIC 3502,0 59 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3502,0 60 0 
+GRAPHIC 3514,0 60 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3514,0 61 0 
+GRAPHIC 3474,0 61 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3474,0 62 0 
+GRAPHIC 444,0 62 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 444,0 63 0 
+GRAPHIC 630,0 63 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 630,0 64 0 
+GRAPHIC 2462,0 64 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 920,0 65 0 
+GRAPHIC 3468,0 65 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2462,0 66 0 
+GRAPHIC 3853,0 66 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 519,0 67 0 
+GRAPHIC 543,0 67 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2486,0 68 0 
+GRAPHIC 456,0 68 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3468,0 69 0 
+GRAPHIC 2204,0 69 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 543,0 70 0 
+GRAPHIC 3315,0 70 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 456,0 71 0 
+NO_GRAPHIC 71
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2204,0 72 0 
+GRAPHIC 2533,0 73 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3315,0 73 0 
+GRAPHIC 626,0 74 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 74
+GRAPHIC 795,0 75 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 525,0 76 0 
-DESIGN riscv_core
-VIEW structural.bd
-GRAPHIC 626,0 77 0 
-DESIGN riscv_core
-VIEW structural.bd
-GRAPHIC 795,0 78 0 
-DESIGN riscv_core
-VIEW structural.bd
-NO_GRAPHIC 83
+NO_GRAPHIC 80
 LIBRARY work
 DESIGN alu
 VIEW behavioral
-GRAPHIC 327,0 85 0 
+GRAPHIC 327,0 82 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 96
+NO_GRAPHIC 93
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 1601,0 98 0 
+GRAPHIC 1601,0 95 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 103
+NO_GRAPHIC 100
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2452,0 105 0 
+GRAPHIC 2452,0 102 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 118
+NO_GRAPHIC 113
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3458,0 120 0 
+GRAPHIC 3458,0 115 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 129
+NO_GRAPHIC 124
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 289,0 131 0 
+GRAPHIC 289,0 126 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 142
+NO_GRAPHIC 137
 LIBRARY work
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 144
+NO_GRAPHIC 139
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 327,0 147 0 
+GRAPHIC 327,0 142 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 1601,0 148 0 
+GRAPHIC 1601,0 143 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2452,0 149 0 
+GRAPHIC 2452,0 144 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3458,0 150 0 
+GRAPHIC 3458,0 145 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 289,0 151 0 
+GRAPHIC 289,0 146 0 
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 154
+NO_GRAPHIC 149
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 685,0 156 0 
+GRAPHIC 685,0 151 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 1157,0 170 0 
+GRAPHIC 1157,0 165 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 941,0 184 0 
+GRAPHIC 941,0 179 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 784,0 187 0 
+GRAPHIC 784,0 182 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2314,0 200 0 
+GRAPHIC 2314,0 195 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 506,0 210 0 
+GRAPHIC 611,0 208 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 611,0 220 0 
+GRAPHIC 799,0 218 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 799,0 230 0 
+NO_GRAPHIC 229
 DESIGN riscv_core
 VIEW structural.bd
-NO_GRAPHIC 241
+GRAPHIC 327,0 231 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 327,0 243 0 
+GRAPHIC 458,0 233 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 458,0 245 0 
+GRAPHIC 2010,0 234 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2010,0 246 0 
+GRAPHIC 446,0 235 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 446,0 247 0 
+GRAPHIC 462,0 236 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 462,0 248 0 
+GRAPHIC 3510,0 237 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3510,0 249 0 
+GRAPHIC 3516,0 238 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3516,0 250 0 
+GRAPHIC 916,0 239 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 916,0 251 0 
+GRAPHIC 3504,0 240 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3504,0 252 0 
+GRAPHIC 3498,0 241 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3498,0 253 0 
+GRAPHIC 1601,0 243 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 1601,0 255 0 
+GRAPHIC 1111,0 245 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 1111,0 257 0 
+GRAPHIC 2464,0 246 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2464,0 258 0 
+GRAPHIC 1153,0 247 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 1153,0 259 0 
+GRAPHIC 2452,0 249 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2452,0 261 0 
+GRAPHIC 426,0 251 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 426,0 263 0 
+GRAPHIC 2464,0 252 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2464,0 264 0 
+GRAPHIC 85,0 253 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 922,0 265 0 
+GRAPHIC 99,0 254 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 85,0 266 0 
+GRAPHIC 545,0 255 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 99,0 267 0 
+GRAPHIC 632,0 256 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 521,0 268 0 
+GRAPHIC 3476,0 257 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 545,0 269 0 
+GRAPHIC 3855,0 258 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 632,0 270 0 
+GRAPHIC 446,0 259 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3476,0 271 0 
+GRAPHIC 3458,0 261 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2488,0 272 0 
+GRAPHIC 3476,0 263 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 446,0 273 0 
+GRAPHIC 3516,0 264 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3458,0 275 0 
+GRAPHIC 3510,0 265 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3476,0 277 0 
+GRAPHIC 916,0 266 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3516,0 278 0 
+GRAPHIC 3504,0 267 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3510,0 279 0 
+GRAPHIC 3498,0 268 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 916,0 280 0 
+GRAPHIC 3470,0 269 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3504,0 281 0 
+GRAPHIC 289,0 271 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3498,0 282 0 
+GRAPHIC 434,0 273 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 3470,0 283 0 
+GRAPHIC 440,0 274 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 289,0 285 0 
+GRAPHIC 567,0 275 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 434,0 287 0 
+GRAPHIC 561,0 276 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 440,0 288 0 
+GRAPHIC 2329,0 277 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 567,0 289 0 
+GRAPHIC 555,0 278 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 561,0 290 0 
+GRAPHIC 545,0 279 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 2329,0 291 0 
+GRAPHIC 458,0 280 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 555,0 292 0 
+GRAPHIC 626,0 281 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 545,0 293 0 
+GRAPHIC 2533,0 285 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 458,0 294 0 
+GRAPHIC 626,0 286 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 626,0 295 0 
+GRAPHIC 795,0 287 0 
 DESIGN riscv_core
 VIEW structural.bd
-GRAPHIC 525,0 299 0 
-DESIGN riscv_core
-VIEW structural.bd
-GRAPHIC 626,0 300 0 
-DESIGN riscv_core
-VIEW structural.bd
-GRAPHIC 795,0 301 0 
-DESIGN riscv_core
-VIEW structural.bd
-NO_GRAPHIC 303
+NO_GRAPHIC 289

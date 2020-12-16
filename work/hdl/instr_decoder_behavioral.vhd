@@ -18,15 +18,13 @@ ENTITY instr_decoder IS
 	  i_encoded_instr : in std_logic_vector(31 downto 0);
 		
 	  o_decoded_instr : out t_riscv_inst;
-	  o_branch  : out std_logic;
-	  o_memrd   : out std_logic;
-	  o_memwr   : out std_logic;
-	  o_mem2reg : out std_logic;
-	  o_regwr   : out std_logic;
-	  o_alusrc  : out std_logic;
-	  o_pc_ctrl : out std_logic_vector(3 downto 0);
-	  o_pc2reg  : out std_logic;
-	  o_aluop   : out aluop);
+	  o_memrd    : out std_logic;
+	  o_memwr    : out std_logic;
+	  o_regwr    : out std_logic;
+	  o_alusrc   : out std_logic;
+	  o_pc_ctrl  : out std_logic_vector(3 downto 0);
+	  o_regwdsel : out std_logic_vector(1 downto 0);
+	  o_aluop    : out aluop);
 END ENTITY instr_decoder;
 
 --
@@ -37,14 +35,12 @@ ARCHITECTURE behavioral OF instr_decoder IS
 	
   signal s_decoded_instr : t_riscv_inst;
 	
-  signal s_branch  : std_logic;
   signal s_memrd   : std_logic;
   signal s_memwr   : std_logic;
-  signal s_mem2reg : std_logic;
   signal s_regwr   : std_logic;
   signal s_alusrc  : std_logic;
   signal s_pc_ctrl : std_logic_vector(3 downto 0);
-  signal s_pc2reg  : std_logic;
+  signal s_regwdsel: std_logic_vector(1 downto 0);
   signal s_aluop   : aluop;
 	
 BEGIN
@@ -126,20 +122,13 @@ BEGIN
 	
 	output : process(s_decoded_instr)
 	begin
-	  s_branch  <= '0';
 	  s_memrd   <= '0';
 	  s_memwr   <= '0';
-	  s_mem2reg <= '0';
 	  s_regwr   <= '0';
 	  s_alusrc  <= '0';
- 	  s_pc2reg  <= '0';
 	  s_pc_ctrl <= "0000";
+	  s_regwdsel<= "00";
 	  s_aluop   <= OP_A;
-    
-    -- Assign branch
-    if is_branch(s_decoded_instr) then
-      s_branch <= '1';
-    end if;
     
     -- Assign memrd
     if s_decoded_instr = INST_LW then
@@ -170,9 +159,15 @@ BEGIN
 		s_alusrc <= '1';
     end if;
 		
-	-- Assign pc2reg
+	-- Assign o_regwdsel
 	if is_pc2reg(s_decoded_instr) then
-		s_pc2reg <= '1';
+		o_regwdsel <= "11";
+	elsif s_decoded_instr = INST_AUIPC then
+	  o_regwdsel <= "10";
+	elsif s_decoded_instr = INST_LW then
+	  o_regwdsel <= "01";
+	else 
+	  o_regwdsel <= "00";
 	end if;
 
 	-- Assign pc_ctrl
@@ -279,14 +274,12 @@ BEGIN
 	end process;
 	
 	o_decoded_instr <= s_decoded_instr;
-	o_branch  <= s_branch;
 	o_memrd   <= s_memrd;
 	o_memwr   <= s_memwr;
-	o_mem2reg <= s_mem2reg;
 	o_regwr   <= s_regwr;
 	o_alusrc  <= s_alusrc;
-	o_pc2reg  <= s_pc2reg;
 	o_pc_ctrl <= s_pc_ctrl;
+	o_regwdsel<= s_regwdsel;
 	o_aluop   <= s_aluop;
 	
 	
