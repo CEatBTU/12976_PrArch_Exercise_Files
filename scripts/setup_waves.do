@@ -18,13 +18,11 @@ add wave -divider "Inst. Decoder"
 add wave sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_decoded_instr \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_aluop \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_alusrc \
-	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_branch \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_decoded_instr \
-	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_mem2reg \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_memrd \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_memwr \
-	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_pc2reg \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_pc_ctrl \
+	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_regwdsel \
 	sim:/tb_riscv_core/u_riscv_core/u_inst_dec/o_regwr
 
 add wave -divider "Reg. File"
@@ -45,5 +43,18 @@ add wave \
 	sim:/tb_riscv_core/u_riscv_core/u_alu/i_A \
 	sim:/tb_riscv_core/u_riscv_core/u_alu/i_B \
 	sim:/tb_riscv_core/u_riscv_core/u_alu/alu_ctrl \
-	sim:/tb_riscv_core/u_riscv_core/u_alu/output
+	sim:/tb_riscv_core/u_riscv_core/u_alu/output \
+	sim:/tb_riscv_core/u_riscv_core/u_alu/cmp_ltu \
+	sim:/tb_riscv_core/u_riscv_core/u_alu/cmp_lt \
+	sim:/tb_riscv_core/u_riscv_core/u_alu/cmp_eq \
+	sim:/tb_riscv_core/u_riscv_core/u_alu/cmp_gt \
+	sim:/tb_riscv_core/u_riscv_core/u_alu/cmp_gtu
+
+	
+add wave -divider "Data Memory"
+add wave \
+	sim:/tb_riscv_core/u_data_memory/s_stack_segment \
+	sim:/tb_riscv_core/u_data_memory/s_data_segment 
+
+
 

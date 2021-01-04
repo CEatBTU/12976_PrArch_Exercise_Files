@@ -79,6 +79,7 @@ PACKAGE pkg_riscv_insts IS
 	function is_SET(instr : t_riscv_inst) return boolean;
 	function is_branch(instr : t_riscv_inst) return boolean;
 	function is_pc2reg(instr : t_riscv_inst) return boolean;
+	function is_jump(instr : t_riscv_inst) return boolean;
 END pkg_riscv_insts;
 
 PACKAGE BODY pkg_riscv_insts IS
@@ -153,7 +154,16 @@ PACKAGE BODY pkg_riscv_insts IS
 	
 	function is_pc2reg(instr : t_riscv_inst) return boolean is
 	begin
-		if (instr = INST_JAL) or (instr = INST_JALR) or (instr = INST_AUIPC) then
+		if (instr = INST_AUIPC) then
+			return true;
+		else
+			return false;
+		end if;
+	end function;
+
+	function is_jump(instr : t_riscv_inst) return boolean is
+	begin
+		if (instr = INST_JAL) or (instr = INST_JALR) then
 			return true;
 		else
 			return false;
@@ -162,7 +172,7 @@ PACKAGE BODY pkg_riscv_insts IS
 
 	function writes2reg(instr : t_riscv_inst) return boolean is
 	begin
-		if is_rtype(instr) or is_itype(instr) or is_utype(instr) then
+		if is_rtype(instr) or is_itype(instr) or is_utype(instr) or is_jtype(instr) then
 			return true;
 		else
 			return false;

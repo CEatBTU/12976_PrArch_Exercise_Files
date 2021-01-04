@@ -23,7 +23,7 @@ ENTITY instr_decoder IS
 	  o_regwr    : out std_logic;
 	  o_alusrc   : out std_logic;
 	  o_pc_ctrl  : out std_logic_vector(3 downto 0);
-	  o_regwdsel : out std_logic_vector(1 downto 0);
+	  o_regwdsel : out std_logic_vector(2 downto 0);
 	  o_aluop    : out aluop);
 END ENTITY instr_decoder;
 
@@ -40,7 +40,7 @@ ARCHITECTURE behavioral OF instr_decoder IS
   signal s_regwr   : std_logic;
   signal s_alusrc  : std_logic;
   signal s_pc_ctrl : std_logic_vector(3 downto 0);
-  signal s_regwdsel: std_logic_vector(1 downto 0);
+  signal s_regwdsel: std_logic_vector(2 downto 0);
   signal s_aluop   : aluop;
 	
 BEGIN
@@ -127,7 +127,7 @@ BEGIN
 	  s_regwr   <= '0';
 	  s_alusrc  <= '0';
 	  s_pc_ctrl <= "0000";
-	  s_regwdsel<= "00";
+	  s_regwdsel<= "000";
 	  s_aluop   <= OP_A;
     
     -- Assign memrd
@@ -160,14 +160,16 @@ BEGIN
     end if;
 		
 	-- Assign o_regwdsel
-	if is_pc2reg(s_decoded_instr) then
-		o_regwdsel <= "11";
+	if is_jump(s_decoded_instr) then
+		s_regwdsel <= "100";
+	elsif is_pc2reg(s_decoded_instr) then
+		s_regwdsel <= "011";
 	elsif s_decoded_instr = INST_AUIPC then
-	  o_regwdsel <= "10";
+		s_regwdsel <= "010";
 	elsif s_decoded_instr = INST_LW then
-	  o_regwdsel <= "01";
+		s_regwdsel <= "001";
 	else 
-	  o_regwdsel <= "00";
+		s_regwdsel <= "000";
 	end if;
 
 	-- Assign pc_ctrl
@@ -274,13 +276,13 @@ BEGIN
 	end process;
 	
 	o_decoded_instr <= s_decoded_instr;
-	o_memrd   <= s_memrd;
-	o_memwr   <= s_memwr;
-	o_regwr   <= s_regwr;
-	o_alusrc  <= s_alusrc;
-	o_pc_ctrl <= s_pc_ctrl;
-	o_regwdsel<= s_regwdsel;
-	o_aluop   <= s_aluop;
+	o_memrd    <= s_memrd;
+	o_memwr    <= s_memwr;
+	o_regwr    <= s_regwr;
+	o_alusrc   <= s_alusrc;
+	o_pc_ctrl  <= s_pc_ctrl;
+	o_regwdsel <= s_regwdsel;
+	o_aluop    <= s_aluop;
 	
 	
 END ARCHITECTURE behavioral;
