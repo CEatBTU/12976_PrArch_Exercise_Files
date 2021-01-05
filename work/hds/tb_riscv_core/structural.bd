@@ -111,19 +111,19 @@ value "/home/brandmar/12976_PrArch_Exercise_Files/work/hds/tb_riscv_core"
 )
 (vvPair
 variable "date"
-value "12/03/20"
+value "01/04/21"
 )
 (vvPair
 variable "day"
-value "Thu"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Thursday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "03"
+value "04"
 )
 (vvPair
 variable "entity_name"
@@ -151,7 +151,7 @@ value "brandmar"
 )
 (vvPair
 variable "graphical_source_date"
-value "12/03/20"
+value "01/04/21"
 )
 (vvPair
 variable "graphical_source_group"
@@ -163,7 +163,7 @@ value "paulchen.Informatik.tu-cottbus.de"
 )
 (vvPair
 variable "graphical_source_time"
-value "14:18:45"
+value "20:13:11"
 )
 (vvPair
 variable "group"
@@ -195,7 +195,7 @@ value "$HDS_PROJECT_DIR/work/sim"
 )
 (vvPair
 variable "mm"
-value "12"
+value "01"
 )
 (vvPair
 variable "module_name"
@@ -203,11 +203,11 @@ value "tb_riscv_core"
 )
 (vvPair
 variable "month"
-value "Dec"
+value "Jan"
 )
 (vvPair
 variable "month_long"
-value "December"
+value "January"
 )
 (vvPair
 variable "p"
@@ -271,7 +271,7 @@ value "structural"
 )
 (vvPair
 variable "time"
-value "14:18:45"
+value "20:13:11"
 )
 (vvPair
 variable "unit"
@@ -291,11 +291,11 @@ value "structural"
 )
 (vvPair
 variable "year"
-value "2020"
+value "2021"
 )
 (vvPair
 variable "yy"
-value "20"
+value "21"
 )
 ]
 )
@@ -1022,50 +1022,14 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,9900,38500,10800"
-st "SIGNAL rst           : std_logic"
+st "SIGNAL rst           : std_logic
+"
 )
 )
 *34 (SaComponent
 uid 473,0
 optionalChildren [
 *35 (CptPort
-uid 437,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 438,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "24250,19625,25000,20375"
-)
-tg (CPTG
-uid 439,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 440,0
-va (VaSet
-font "courier,8,0"
-)
-xt "26000,19500,37000,20400"
-st "i_instr_data : (31:0)"
-blo "26000,20200"
-)
-)
-thePort (LogicalPort
-lang 11
-decl (Decl
-n "i_instr_data"
-t "std_logic_vector"
-b "(31 downto 0)"
-o 3
-suid 3,0
-)
-)
-)
-*36 (CptPort
 uid 441,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1103,7 +1067,7 @@ suid 4,0
 )
 )
 )
-*37 (CptPort
+*36 (CptPort
 uid 445,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1136,13 +1100,13 @@ m 1
 decl (Decl
 n "o_data_addr"
 t "std_logic_vector"
-b "(31 downto 0)"
+b "(31 DOWNTO 0)"
 o 5
 suid 5,0
 )
 )
 )
-*38 (CptPort
+*37 (CptPort
 uid 449,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1180,7 +1144,7 @@ suid 6,0
 )
 )
 )
-*39 (CptPort
+*38 (CptPort
 uid 453,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1218,7 +1182,7 @@ suid 7,0
 )
 )
 )
-*40 (CptPort
+*39 (CptPort
 uid 457,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1256,7 +1220,7 @@ suid 8,0
 )
 )
 )
-*41 (CptPort
+*40 (CptPort
 uid 461,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1291,7 +1255,7 @@ suid 9,0
 )
 )
 )
-*42 (CptPort
+*41 (CptPort
 uid 465,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1326,7 +1290,7 @@ suid 10,0
 )
 )
 )
-*43 (CptPort
+*42 (CptPort
 uid 469,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1361,6 +1325,43 @@ t "std_logic_vector"
 b "(31 downto 0)"
 o 6
 suid 11,0
+)
+)
+)
+*43 (CptPort
+uid 1123,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1124,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "24250,19625,25000,20375"
+)
+tg (CPTG
+uid 1125,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1126,0
+va (VaSet
+font "courier,8,0"
+)
+xt "26000,19550,38500,20450"
+st "i_encoded_instr : (31:0)"
+blo "26000,20250"
+)
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "i_encoded_instr"
+t "std_logic_vector"
+b "(31 downto 0)"
+o 3
+suid 12,0
 )
 )
 )
@@ -2026,7 +2027,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,2700,38500,3600"
-st "SIGNAL clk           : std_logic"
+st "SIGNAL clk           : std_logic
+"
 )
 )
 *67 (Net
@@ -2045,7 +2047,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,8100,48500,9000"
-st "SIGNAL instr_addr    : std_logic_vector(31 downto 0)"
+st "SIGNAL instr_addr    : std_logic_vector(31 downto 0)
+"
 )
 )
 *68 (Net
@@ -2064,7 +2067,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,9000,48500,9900"
-st "SIGNAL instr_data    : std_logic_vector(31 downto 0)"
+st "SIGNAL instr_data    : std_logic_vector(31 downto 0)
+"
 )
 )
 *69 (Net
@@ -2083,7 +2087,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,3600,48500,4500"
-st "SIGNAL data_addr     : std_logic_vector(31 downto 0)"
+st "SIGNAL data_addr     : std_logic_vector(31 downto 0)
+"
 )
 )
 *70 (Net
@@ -2101,7 +2106,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,6300,48500,7200"
-st "SIGNAL data_todmem   : std_logic_vector(31 downto 0)"
+st "SIGNAL data_todmem   : std_logic_vector(31 downto 0)
+"
 )
 )
 *71 (Net
@@ -2120,7 +2126,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,4500,48500,5400"
-st "SIGNAL data_fromdmem : std_logic_vector(31 downto 0)"
+st "SIGNAL data_fromdmem : std_logic_vector(31 downto 0)
+"
 )
 )
 *72 (Net
@@ -2138,7 +2145,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,5400,38500,6300"
-st "SIGNAL data_rd       : std_logic"
+st "SIGNAL data_rd       : std_logic
+"
 )
 )
 *73 (Net
@@ -2156,7 +2164,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,7200,38500,8100"
-st "SIGNAL data_wr       : std_logic"
+st "SIGNAL data_wr       : std_logic
+"
 )
 )
 *74 (Wire
@@ -2173,7 +2182,7 @@ pts [
 "19750,19000"
 ]
 )
-start &36
+start &35
 end &48
 sat 32
 eat 32
@@ -2210,8 +2219,9 @@ pts [
 "19750,20000"
 ]
 )
-start &35
+start &43
 end &49
+ss 0
 sat 32
 eat 32
 sty 1
@@ -2311,7 +2321,7 @@ pts [
 "56250,21000"
 ]
 )
-start &37
+start &36
 end &56
 sat 32
 eat 32
@@ -2348,7 +2358,7 @@ pts [
 "56250,22000"
 ]
 )
-start &43
+start &42
 end &57
 sat 32
 eat 32
@@ -2385,7 +2395,7 @@ pts [
 "56250,23000"
 ]
 )
-start &38
+start &37
 end &60
 sat 32
 eat 32
@@ -2422,7 +2432,7 @@ pts [
 "56250,27000"
 ]
 )
-start &39
+start &38
 end &58
 sat 32
 eat 32
@@ -2459,7 +2469,7 @@ pts [
 "56250,28000"
 ]
 )
-start &40
+start &39
 end &59
 sat 32
 eat 32
@@ -2643,7 +2653,7 @@ pts [
 ]
 )
 start &87
-end &41
+end &40
 sat 32
 eat 32
 stc 0
@@ -2680,7 +2690,7 @@ pts [
 ]
 )
 start &77
-end &42
+end &41
 sat 32
 eat 32
 stc 0
@@ -2814,11 +2824,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-8,41,1928,1050"
-viewArea "-14800,3800,79415,51430"
+viewArea "-14800,3800,72563,47966"
 cachedDiagramExtent "0,0,72150,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "0,0"
-lastUid 1099,0
+lastUid 1126,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
